@@ -1,0 +1,4 @@
+- args:
+    action: findByIngredients
+    role: customer
+  type: drop_action_permission

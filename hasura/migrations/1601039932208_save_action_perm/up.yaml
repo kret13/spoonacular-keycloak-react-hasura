@@ -1,0 +1,7 @@
+- args:
+    action: findByIngredients
+    definition:
+      select:
+        filter: {}
+    role: customer
+  type: create_action_permission

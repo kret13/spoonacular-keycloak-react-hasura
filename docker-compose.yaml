@@ -1,0 +1,58 @@
+version: "3.6"
+services:
+  postgres1:
+    image: postgres:12.2
+    restart: always
+    volumes:
+      - db_data_hasura:/var/lib/postgresql/data
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_PASSWORD: "100cloud"
+
+  postgres2:
+    image: postgres:12.2
+    restart: always
+    volumes:
+      - db_data_kc:/var/lib/postgresql/data
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+
+  graphql-engine:
+    image: hasura/graphql-engine:v1.3.2
+    ports:
+      - "8081:8080"
+    depends_on:
+      - "postgres1"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:100cloud@postgres1:5432/postgres
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ADMIN_SECRET: 100%cloud
+      HASURA_GRAPHQL_JWT_SECRET: '{"type":"RS256","jwk_url": "http://keycloak:8080/auth/realms/reg/protocol/openid-connect/certs"}'
+  keycloak:
+    image: quay.io/keycloak/keycloak:11.0.2
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres2
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
+    ports:
+      - 3456:8080
+    depends_on:
+      - postgres2
+
+volumes:
+  db_data_hasura:
+  db_data_kc:
+    driver: local

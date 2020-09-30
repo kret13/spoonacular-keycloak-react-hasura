@@ -1,0 +1,5 @@
+mutation findByIngredients($ingredients: String!, $number: Int!) {
+  findByIngredients(args: { ingredients: $ingredients, number: $number }) {
+    response
+  }
+}

@@ -1,0 +1,30 @@
+version: 2
+tables:
+- table:
+    schema: public
+    name: test
+actions:
+- name: findByIngredients
+  definition:
+    handler: http://host.docker.internal:3010/findByIngredients
+    output_type: FindByIngredientsOutput!
+    arguments:
+    - name: args
+      type: FindByIngredientsInput!
+    type: mutation
+    kind: synchronous
+  permissions:
+  - role: customer
+custom_types:
+  input_objects:
+  - name: FindByIngredientsInput
+    fields:
+    - name: ingredients
+      type: String!
+    - name: number
+      type: Int!
+  objects:
+  - name: FindByIngredientsOutput
+    fields:
+    - name: response
+      type: String!

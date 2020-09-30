@@ -1,0 +1,36 @@
+- args:
+    enums: []
+    input_objects:
+    - description: null
+      fields:
+      - description: null
+        name: ingredients
+        type: String!
+      - description: null
+        name: number
+        type: Int!
+      name: FindByIngredientsInput
+    objects:
+    - description: null
+      fields:
+      - description: null
+        name: response
+        type: String!
+      name: FindByIngredientsOutput
+    scalars: []
+  type: set_custom_types
+- args:
+    comment: null
+    definition:
+      arguments:
+      - description: null
+        name: args
+        type: FindByIngredientsInput!
+      forward_client_headers: false
+      handler: http://host.docker.internal:3010/findByIngredients
+      headers: []
+      kind: synchronous
+      output_type: FindByIngredientsOutput!
+      type: mutation
+    name: findByIngredients
+  type: create_action

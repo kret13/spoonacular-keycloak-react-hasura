@@ -1,0 +1,12 @@
+.outlineNone {
+  outline: none;
+}
+.selectedTagName::after {
+  content: "  x";
+}
+.buttonSearch:focus {
+  box-shadow: none;
+}
+.buttonSearch:active {
+  box-shadow: none !important;
+}

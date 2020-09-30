@@ -1,0 +1,73 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "",
+  "description": "some desc",
+  "dependencies": {
+    "apollo-boost": "^0.4.4",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link": "^1.2.14",
+    "apollo-link-error": "^1.1.13",
+    "apollo-link-http": "^1.5.17",
+    "bootstrap": "^4.5.2",
+    "graphql": "^14.5.6",
+    "keycloak-js": "^11.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.3",
+    "react-tag-autocomplete": "^6.1.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "^1.15.0",
+    "@graphql-codegen/cli": "^1.15.0",
+    "@graphql-codegen/typescript": "^1.15.0",
+    "@graphql-codegen/typescript-operations": "^1.15.0",
+    "@graphql-codegen/typescript-react-apollo": "^1.15.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/user-event": "^12.1.6",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/react-tag-autocomplete": "^5.12.0",
+    "@apollo/react-hooks": "^3.1.1",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "dotenv": "^8.2.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "start": "run-p start-cra start-generate",
+    "start-cra": "react-scripts start",
+    "start-generate": "graphql-codegen --config codegen.js --watch",
+    "generate": "graphql-codegen --config codegen.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Kresimir Troskot",
+  "license": "MIT"
+}

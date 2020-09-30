@@ -1,0 +1,29 @@
+{
+  "name": "hasura",
+  "author": "Kresimir Troskot",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "download": "download --out . --filename hasura.exe https://github.com/hasura/graphql-engine/releases/download/v1.3.2/cli-hasura-windows-amd64.exe",
+    "start": "hasura console --admin-secret 100%cloud",
+    "status": "hasura migrate status --admin-secret 100%cloud",
+    "migrate": "hasura migrate apply --admin-secret 100%cloud",
+    "createmigration": "hasura migrate create --admin-secret 100%cloud",
+    "export-metadata": "hasura metadata export --admin-secret 100%cloud",
+    "pg_dump-and-save-as-a-migration": "hasura migrate create 'init' --sql-from-server --admin-secret 100%cloud",
+    "rollback": "hasura migrate apply --down 1 --admin-secret 100%cloud",
+    "seed": "node -r esm bin/seed.js",
+    "add": "node -r esm bin/add.js"
+  },
+  "devDependencies": {
+    "casual": "^1.6.2",
+    "dotenv": "^8.2.0",
+    "download-cli": "^1.1.1",
+    "esm": "^3.2.25",
+    "lodash": "^4.17.15",
+    "needle": "^2.5.0",
+    "uuid": "^8.1.0"
+  },
+  "dependencies": {}
+}
